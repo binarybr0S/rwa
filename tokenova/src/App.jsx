@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AboutUs from "./pages/AboutUs";
+import MetamaskAuth from "./pages/MetamaskAuth";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/metamaskauth" element={<MetamaskAuth />} />
           </Routes>
         </div>
         <Footer />
