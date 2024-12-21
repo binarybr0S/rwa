@@ -6,9 +6,22 @@ const Dashboard = () => {
   const [address, setAddress] = useState('');
   const [balance, setBalance] = useState('');
   const [loading, setLoading] = useState(true);
+  const [userName, setUserName] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
+    const fetchUsername = async () => {
+      // var res = await fetch("http://localhost:5080/api/users/me", {
+      //   headers: {
+      //       'Content-Type': 'application/json'
+      //   },
+      //   cors: 'no-cors'
+      // })
+      // setUserName(res.user.name);
+      setUserName(localStorage.getItem('user.name'));
+    }
+    fetchUsername();
+    
     const checkWallet = async () => {
       const walletAddress = localStorage.getItem('walletAddress');
       const walletBalance = localStorage.getItem('walletBalance');
@@ -87,6 +100,11 @@ const Dashboard = () => {
           </div>
           
           <div className="space-y-6">
+          <div className="bg-gray-700 p-6 rounded-lg">
+              <h2 className="text-xl font-semibold mb-2">Full Name:</h2>
+              <p className="font-mono break-all">{userName ? userName : "Loading..."}</p>
+            </div>
+
             <div className="bg-gray-700 p-6 rounded-lg">
               <h2 className="text-xl font-semibold mb-2">Wallet Address</h2>
               <p className="font-mono break-all">{address}</p>

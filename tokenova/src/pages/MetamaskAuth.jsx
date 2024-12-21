@@ -31,9 +31,40 @@ const MetamaskAuth = () => {
       const balance = await provider.getBalance(accounts[0]);
       const balanceInEth = ethers.utils.formatEther(balance);
       
+      const walletAddress = accounts[0];
+      const name = "John Doe";
+      const uudi = "6766f1f34c9b8cc71696c951"
       // Store wallet info in localStorage
       localStorage.setItem('walletAddress', accounts[0]);
       localStorage.setItem('walletBalance', balanceInEth);
+      localStorage.setItem('user.name', name);
+
+      var res = await fetch("http://localhost:5080/api/auth/signup", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        cors: 'no-cors',
+        body: JSON.stringify({
+            uudi,
+            name,
+            walletAddress,
+        })
+      })
+      
+      if (res.error){
+        res = await fetch("http://localhost:5080/api/auth/login", {
+          method: "POST",
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          cors: 'no-cors',
+          body: JSON.stringify({
+              uudi,
+              walletAddress,
+          })
+        })
+      }
       
       setLoading(false);
       navigate('/dashboard');
