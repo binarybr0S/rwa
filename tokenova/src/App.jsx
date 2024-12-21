@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AboutUs from "./pages/AboutUs";
 import MetamaskAuth from "./pages/MetamaskAuth";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/metamaskauth" element={<MetamaskAuth />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </div>
         <Footer />
