@@ -1,4 +1,3 @@
-import { get } from "mongoose";
 import User from "../models/User.js"
 
 async function getMyUserProfile(req, res) {
@@ -10,7 +9,6 @@ async function getMyUserProfile(req, res) {
         res.status(200).json({
             user: {
                 ...user._doc,
-                password: undefined
             }
         });
     } catch (error) {
@@ -57,7 +55,6 @@ async function updateUser(req, res) {
         res.status(200).json({
             user: {
                 ...user._doc,
-                password: undefined
             }
         });
     } catch (error) {
