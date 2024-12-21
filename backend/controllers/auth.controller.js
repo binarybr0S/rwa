@@ -1,24 +1,26 @@
 import User from "../models/User.js";
-import bcrypt from 'bcryptjs'
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 import { authTokenCookie } from "../config/authToken.js";
 
+// -----------------------------------------------------------------------------------------------------------
+// Note: `uudi` (uniqueUserDocumentId) will be provided by the DigiLocker API after user has authenticated using it.
+// -----------------------------------------------------------------------------------------------------------
+
 async function signup(req, res) {
-    const { name, email, password } = req.body;
+    const { name, uudi, walletAddress } = req.body;
     try {
-        if (!name || !email || !password) {
+        if (!name || !walletAddress || !uudi) {
             return res.status(400).json({message:"All fields are required"})
-        }        
-        const userExists = await User.findOne({ email });
+        }
+        const userExists = await User.findOne({ walletAddress });
         if (userExists) {
-            return res.status(400).json({message:"User with this email already exists"})
+            return res.status(400).json({message:"User with this wallet address already exists"})
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
         const user = await User.create({
-            email,
-            password: hashedPassword,
             name,
+            uudi,
+            walletAddress,
         })
 
         await user.save();
@@ -27,10 +29,7 @@ async function signup(req, res) {
         generateTokenAndSetCookie(res, user);
 
         res.status(200).json({
-            user: {
-                ...user._doc,
-                password: undefined
-            }
+            user
         })
 
     } catch (error) {
@@ -38,21 +37,21 @@ async function signup(req, res) {
         res.status(500).json({message:"Error occurred"})
     }
 }
+
 async function login(req, res) {
-    const { email, password } = req.body;
+    const { uudi, walletAddress } = req.body;
     try {
-        if (!email || !password) {
+        if (!walletAddress) {
             return res.status(400).json({message:"All fields are required"})
         }
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ uudi });
         if (!user) {
             return res.status(404).json({message: "User not found"})
         }
-        
-        const isPasswordValid = bcrypt.compare(password, user.password);
-        if (!isPasswordValid) {
-            return res.status(400).json({message:"Invalid credentials"})
+
+        if (user.walletAddress != walletAddress) {
+            res.status(400).json({ message: "Invalid Credentials" });
         }
         
         generateTokenAndSetCookie(res, user);
@@ -62,10 +61,7 @@ async function login(req, res) {
         res.status(200).json({
             error: false,
             message:"Logged in successfully",
-            user: {
-                ...user._doc,
-                password: undefined
-            }
+            user: user
         })
 
     } catch (error) {
@@ -89,10 +85,7 @@ async function checkAuth(req, res) {
             return res.status(400).json({message:"User not found"})
         }
         res.status(200).json({
-            user: {
-                ...user._doc,
-                password: undefined
-            }
+            user
         })
     } catch (error) {
         console.log("Error in checkAuth", error);
