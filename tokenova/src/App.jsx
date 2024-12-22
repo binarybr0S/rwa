@@ -11,6 +11,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Explore from "./pages/Explore";
 import Transactions from "./pages/Transactions";
 import Transfer from "./pages/Transfer";
+import Verification from "./pages/Verification";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/explore" element={<Explore />} />
             <Route path="/transfer" element={<Transfer />} />
+            <Route path="/verification" element={<Verification />} />
           </Routes>
         </div>
         <Footer />

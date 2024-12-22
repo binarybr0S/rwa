@@ -35,6 +35,9 @@ const LoggedInNavbar = () => {
         <a href="/explore" className="hover:text-primary">
           Explore
         </a>
+        <a href="/verification" className="hover:text-primary">
+          Verify
+        </a>
         <a href="/transfer" className="hover:text-primary">
           Transfer
         </a>
