@@ -31,7 +31,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', verifyToken, usersRouter);
 app.use('/api/assets', verifyToken, assetsRouter);
 app.use('/api/rewards', verifyToken, rewardsRouter);
-app.use('/api/transactions', verifyToken, transactionsRouter);
+app.use('/api/transactions', transactionsRouter);
 
 const port  = process.env.PORT || 5080;
 

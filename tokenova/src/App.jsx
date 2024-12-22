@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import PageNotFound from "./pages/PageNotFound";
 import Explore from "./pages/Explore";
+import Transactions from "./pages/Transactions";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/metamaskauth" element={<MetamaskAuth />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/transaction-history" element={<Transactions />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/explore" element={<Explore />} />
           </Routes>
