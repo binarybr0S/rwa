@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import PageNotFound from "./pages/PageNotFound";
 import Explore from "./pages/Explore";
 import Transactions from "./pages/Transactions";
+import Transfer from "./pages/Transfer";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/transaction-history" element={<Transactions />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/explore" element={<Explore />} />
+            <Route path="/transfer" element={<Transfer />} />
           </Routes>
         </div>
         <Footer />

@@ -140,14 +140,28 @@ const Dashboard = () => {
 </div>
 
 
-            <div className="space-y-6 flex flex-wrap justify-center items-center gap-16">
-              <div className="bg-gray-700 p-6 rounded-lg w-48 h-48 relative">
-                <h2 className="text-xl font-semibold">Full Name:</h2>
-                <p className="font-mono break-all">{userName ? userName : "Loading..."}</p>
+<div className="space-y-6 flex flex-wrap justify-center items-center align-items-middle gap-16">
+              <div className="bg-gray-800 p-6 rounded-lg w-0 h-0 absolute top-5">
+                <h2 className="text-xl font-semibold"></h2>
+                {/* <p className="font-mono break-all">{userName ? userName : "Loading..."}</p> */}
               </div>
-
+              <div className="bg-gray-700 p-6 rounded-lg w-48 h-48 transition-transform transform hover:scale-105">
+                <h2 className="text-xl font-semibold">Asset 1</h2>
+                {/* <p className="font-mono break-all">{userName ? userName : "Loading..."}</p> */}
+              </div>
+              <div className="bg-gray-700 p-6 rounded-lg w-48 h-48 transition-transform transform hover:scale-105">
+                <h2 className="text-xl font-semibold">Asset 2</h2>
+                {/* <p className="font-mono break-all">{userName ? userName : "Loading..."}</p> */}
+              </div>
+              <div className="bg-gray-700 p-6 rounded-lg w-48 h-48 transition-transform transform hover:scale-105">
+                <h2 className="text-xl font-semibold">Asset 3</h2>
+                {/* <p className="font-mono break-all">{userName ? userName : "Loading..."}</p> */}
+              </div>
+              
 
             </div>
+
+
           </div></div>
 
       </div>
