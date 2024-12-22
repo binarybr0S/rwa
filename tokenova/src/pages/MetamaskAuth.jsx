@@ -3,6 +3,7 @@ import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 const MetamaskAuth = () => {
   const [loading, setLoading] = useState(true);
@@ -39,12 +40,23 @@ const MetamaskAuth = () => {
       localStorage.setItem('walletBalance', balanceInEth);
       localStorage.setItem('user.name', name);
 
-      var res = await fetch("http://localhost:5080/api/auth/signup", {
+      const saveToken = (t) => {
+        console.log("res.token", t);  
+        Cookies.set("token", t, {
+          expires: 1,
+          path: "/",
+          secure: false,
+        });
+
+      }
+
+      var res = {};
+
+      res = await fetch("http://localhost:5080/api/auth/signup", {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        cors: 'no-cors',
         body: JSON.stringify({
             uudi,
             name,
@@ -52,18 +64,21 @@ const MetamaskAuth = () => {
         })
       })
       
-      if (res.error){
-        res = await fetch("http://localhost:5080/api/auth/login", {
-          method: "POST",
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          cors: 'no-cors',
-          body: JSON.stringify({
-              uudi,
-              walletAddress,
+      if (res.status != 200) {
+          res = await fetch("http://localhost:5080/api/auth/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                uudi,
+                walletAddress,
+            })
           })
-        })
+          .then(res=>res.json())
+          .then(res=>{
+            saveToken(res.token)
+          })
       }
       
       setLoading(false);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
+import Cookies from 'js-cookie';
 
 const Dashboard = () => {
   const [address, setAddress] = useState('');
@@ -11,14 +12,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchUsername = async () => {
-      // var res = await fetch("http://localhost:5080/api/users/me", {
-      //   headers: {
-      //       'Content-Type': 'application/json'
-      //   },
-      //   cors: 'no-cors'
-      // })
-      // setUserName(res.user.name);
-      setUserName(localStorage.getItem('user.name'));
+        const token = Cookies.get('token');
+        fetch("http://localhost:5080/api/users/me", {
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': token
+          },
+        })
+        .then(res => res.json())
+        .then(res => {setUserName(res.user.name)});
     }
     fetchUsername();
     
@@ -74,6 +76,7 @@ const Dashboard = () => {
   const disconnectWallet = () => {
     localStorage.removeItem('walletAddress');
     localStorage.removeItem('walletBalance');
+    Cookies.remove('token');
     navigate('/');
   };
 
