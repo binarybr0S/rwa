@@ -32,14 +32,17 @@ const LoggedInNavbar = () => {
         <a href="/" className="hover:text-primary">
           Home
         </a>
-        <a href="/my-assets" className="hover:text-primary">
+        <a href="/" className="hover:text-primary">
           My Assets
         </a>
         <a href="/about" className="hover:text-primary">
           Transaction History
         </a>
-        <a href="/login" className="hover:text-primary">
+        <a href="/profile" className="hover:text-primary">
           Profile
+        </a>
+        <a href="/explore" className="hover:text-primary">
+          Share Assets
         </a>
         <div className="flex-grow"></div>
         <a

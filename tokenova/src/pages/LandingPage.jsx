@@ -2,8 +2,17 @@ import React from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import Navbar from "../components/Navbar.jsx";
+import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  document.title = "Tokenova - Home";
+  if (Cookies.get("token")){
+    window.location.href = "/dashboard";
+  }
+
   const particlesInit = async (engine) => {
     await loadSlim(engine);
   };
