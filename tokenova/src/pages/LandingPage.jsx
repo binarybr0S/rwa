@@ -100,7 +100,7 @@ const LandingPage = () => {
   className="bg-primary px-10 py-7 rounded-lg text-white hover:bg-accent transition-transform transform hover:scale-105 animate-slideLeft"
 >
   <span className="inline-flex items-center">
-    Continue with <span className="font-bold">DigiLocker</span>
+    Continue with <span className="font-bold ml-1">DigiLocker</span>
     <img src="digilocker.webp" width="30px" className="ml-2" />
   </span>
 </a>

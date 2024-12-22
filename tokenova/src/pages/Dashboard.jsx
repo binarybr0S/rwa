@@ -23,7 +23,7 @@ const Dashboard = () => {
         .then(res => {setUserName(res.user.name)});
     }
     fetchUsername();
-    
+
     const checkWallet = async () => {
       const walletAddress = localStorage.getItem('walletAddress');
       const walletBalance = localStorage.getItem('walletBalance');
@@ -68,7 +68,7 @@ const Dashboard = () => {
 
     return () => {
       if (window.ethereum) {
-        window.ethereum.removeListener('accountsChanged', () => {});
+        window.ethereum.removeListener('accountsChanged', () => { });
       }
     };
   }, [navigate]);
@@ -90,10 +90,10 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background text-white p-8 mt-12">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto animate-slideLeft">
         <div className="bg-gray-800 rounded-lg p-8 shadow-lg">
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold">Dashboard</h1>
+            <h1 className="text-3xl font-bold">DASHBOARD</h1>
             <button
               onClick={disconnectWallet}
               className="bg-red-500 px-4 py-2 rounded hover:bg-red-600 transition-colors"
@@ -101,9 +101,11 @@ const Dashboard = () => {
               Disconnect Wallet
             </button>
           </div>
-          
+
+
+
           <div className="space-y-6">
-          <div className="bg-gray-700 p-6 rounded-lg">
+            <div className="bg-gray-700 p-6 rounded-lg">
               <h2 className="text-xl font-semibold mb-2">Full Name:</h2>
               <p className="font-mono break-all">{userName ? userName : "Loading..."}</p>
             </div>
@@ -112,13 +114,41 @@ const Dashboard = () => {
               <h2 className="text-xl font-semibold mb-2">Wallet Address</h2>
               <p className="font-mono break-all">{address}</p>
             </div>
-            
+
             <div className="bg-gray-700 p-6 rounded-lg">
               <h2 className="text-xl font-semibold mb-2">Balance</h2>
               <p className="text-2xl font-bold">{parseFloat(balance).toFixed(4)} ETH</p>
             </div>
           </div>
         </div>
+        <br></br>
+
+
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-gray-800 rounded-lg p-8 shadow-lg">
+          <div className="flex justify-between items-center">
+  <span className="text-3xl font-bold">YOUR ASSETS</span>
+  <a
+    href="/explore"
+    className="bg-primary px-3 py-2 rounded-lg text-white hover:bg-accent transition-transform transform hover:scale-105"
+  >
+    <span className="inline-flex items-center">
+      <span className="font-bold ml-1">Explore Assets</span>
+    </span>
+  </a>
+</div>
+
+
+            <div className="space-y-6 flex flex-wrap justify-center items-center gap-16">
+              <div className="bg-gray-700 p-6 rounded-lg w-48 h-48 relative">
+                <h2 className="text-xl font-semibold">Full Name:</h2>
+                <p className="font-mono break-all">{userName ? userName : "Loading..."}</p>
+              </div>
+
+
+            </div>
+          </div></div>
+
       </div>
     </div>
   );

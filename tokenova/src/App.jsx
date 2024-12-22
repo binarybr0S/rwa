@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LandingPage from "./pages/LandingPage";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 import AboutUs from "./pages/AboutUs";
 import MetamaskAuth from "./pages/MetamaskAuth";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import PageNotFound from "./pages/PageNotFound";
+import Explore from "./pages/Explore";
 
 const App = () => {
   return (
@@ -17,11 +18,12 @@ const App = () => {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/*" element={<PageNotFound />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/metamaskauth" element={<MetamaskAuth />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/explore" element={<Explore />} />
           </Routes>
         </div>
         <Footer />

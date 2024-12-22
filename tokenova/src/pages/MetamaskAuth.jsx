@@ -173,7 +173,7 @@ const MetamaskAuth = () => {
         {loading ? (
           <div className="flex flex-col items-center">
             <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-primary border-opacity-75"></div>
-            <p className="text-lg text-gray-300 mt-4">Fetching data from DigiLocker...</p>
+            <p className="text-lg text-gray-300 mt-4">Fetching data from Metamask...</p>
           </div>
         ) : (
           <div className="flex flex-col items-center">
