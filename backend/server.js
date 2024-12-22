@@ -9,6 +9,7 @@ import { usersRouter } from './routes/users.route.js';
 import { authRouter } from './routes/auth.route.js';
 import { assetsRouter } from './routes/assets.route.js';
 import { rewardsRouter } from './routes/rewards.route.js';
+import { transactionsRouter } from './routes/transactions.route.js';
 
 dotenv.config();
 connectDB();
@@ -30,6 +31,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', verifyToken, usersRouter);
 app.use('/api/assets', verifyToken, assetsRouter);
 app.use('/api/rewards', verifyToken, rewardsRouter);
+app.use('/api/transactions', transactionsRouter);
 
 const port  = process.env.PORT || 5080;
 

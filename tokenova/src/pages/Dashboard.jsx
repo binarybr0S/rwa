@@ -29,6 +29,7 @@ const Dashboard = () => {
       const walletBalance = localStorage.getItem('walletBalance');
 
       if (!walletAddress) {
+        Cookies.remove("token");
         navigate('/');
         return;
       }

@@ -38,7 +38,7 @@ const LoggedInNavbar = () => {
         <a href="/" className="hover:text-primary">
           My Assets
         </a>
-        <a href="/about" className="hover:text-primary">
+        <a href="/transaction-history" className="hover:text-primary">
           Transaction History
         </a>
         <a href="/profile" className="hover:text-primary">
