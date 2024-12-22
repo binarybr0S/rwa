@@ -108,7 +108,7 @@ const Dashboard = () => {
           <div className="space-y-6">
             <div className="bg-gray-700 p-6 rounded-lg">
               <h2 className="text-xl font-semibold mb-2">Full Name:</h2>
-              <p className="font-mono break-all">{userName ? userName : "Loading..."}</p>
+              <p className="font-mono break-all">John Doe</p>
             </div>
 
             <div className="bg-gray-700 p-6 rounded-lg">
