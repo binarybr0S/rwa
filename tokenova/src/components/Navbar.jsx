@@ -32,6 +32,9 @@ const LoggedInNavbar = () => {
         <a href="/" className="hover:text-primary">
           Home
         </a>
+        <a href="/explore" className="hover:text-primary">
+          Explore
+        </a>
         <a href="/" className="hover:text-primary">
           My Assets
         </a>
