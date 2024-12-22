@@ -93,28 +93,122 @@ const Explore = () => {
             </div>
 
             <div className="space-y-6">
-              {/* Section 1 */}
               <div className="bg-gray-700 p-6 rounded-lg">
                 <h2 className="text-xl font-bold mb-3">Aadi Joshi's Assets</h2>
                 <div className="flex flex-wrap justify-center gap-6">
-                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105"></div>
-                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105"></div>
-                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105"></div>
-                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105"></div>
-                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105"></div>
+                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                    <img
+                      src="https://via.placeholder.com/150"
+                      alt="Property 1"
+                      className="rounded-lg object-cover w-full h-24 mb-2"
+                    />
+                    <p className="text-white text-center text-sm line-clamp-2">
+                      Luxury Apartment in Downtown: A modern 2-bedroom apartment with stunning city views and a spacious balcony.
+                    </p>
+                  </div>
+                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                    <img
+                      src="https://via.placeholder.com/150"
+                      alt="Property 2"
+                      className="rounded-lg object-cover w-full h-24 mb-2"
+                    />
+                    <p className="text-white text-center text-sm line-clamp-2">
+                      Beachfront Villa: A luxurious 3-bedroom villa located by the beach with private pool and garden.
+                    </p>
+                  </div>
+                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                    <img
+                      src="https://via.placeholder.com/150"
+                      alt="Property 3"
+                      className="rounded-lg object-cover w-full h-24 mb-2"
+                    />
+                    <p className="text-white text-center text-sm line-clamp-2">
+                      Mountain Retreat: A cozy 1-bedroom cabin situated in the mountains, ideal for weekend getaways.
+                    </p>
+                  </div>
+                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                    <img
+                      src="https://via.placeholder.com/150"
+                      alt="Property 4"
+                      className="rounded-lg object-cover w-full h-24 mb-2"
+                    />
+                    <p className="text-white text-center text-sm line-clamp-2">
+                      Urban Loft: A stylish 1-bedroom loft in the heart of the city, perfect for young professionals.
+                    </p>
+                  </div>
+                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                    <img
+                      src="https://via.placeholder.com/150"
+                      alt="Property 5"
+                      className="rounded-lg object-cover w-full h-24 mb-2"
+                    />
+                    <p className="text-white text-center text-sm line-clamp-2">
+                      Countryside Cottage: A peaceful 2-bedroom cottage located in a scenic countryside, ideal for nature lovers.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="space-y-6">
+                <div className="bg-gray-700 p-6 rounded-lg">
+                  <h2 className="text-xl font-bold mb-3">Ajaya Nandiyawar's Assets</h2>
+                  <div className="flex flex-wrap justify-center gap-6">
+                    <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                      <img
+                        src="https://via.placeholder.com/150"
+                        alt="Property 1"
+                        className="rounded-lg object-cover w-full h-24 mb-2"
+                      />
+                      <p className="text-white text-center text-sm line-clamp-2">
+                        Luxury Apartment in Downtown: A modern 2-bedroom apartment with stunning city views and a spacious balcony.
+                      </p>
+                    </div>
+                    <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                      <img
+                        src="https://via.placeholder.com/150"
+                        alt="Property 2"
+                        className="rounded-lg object-cover w-full h-24 mb-2"
+                      />
+                      <p className="text-white text-center text-sm line-clamp-2">
+                        Beachfront Villa: A luxurious 3-bedroom villa located by the beach with private pool and garden.
+                      </p>
+                    </div>
+                    <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                      <img
+                        src="https://via.placeholder.com/150"
+                        alt="Property 3"
+                        className="rounded-lg object-cover w-full h-24 mb-2"
+                      />
+                      <p className="text-white text-center text-sm line-clamp-2">
+                        Mountain Retreat: A cozy 1-bedroom cabin situated in the mountains, ideal for weekend getaways.
+                      </p>
+                    </div>
+                    <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                      <img
+                        src="https://via.placeholder.com/150"
+                        alt="Property 4"
+                        className="rounded-lg object-cover w-full h-24 mb-2"
+                      />
+                      <p className="text-white text-center text-sm line-clamp-2">
+                        Urban Loft: A stylish 1-bedroom loft in the heart of the city, perfect for young professionals.
+                      </p>
+                    </div>
+                    <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105 flex flex-col items-center justify-center p-4">
+                      <img
+                        src="https://via.placeholder.com/150"
+                        alt="Property 5"
+                        className="rounded-lg object-cover w-full h-24 mb-2"
+                      />
+                      <p className="text-white text-center text-sm line-clamp-2">
+                        Countryside Cottage: A peaceful 2-bedroom cottage located in a scenic countryside, ideal for nature lovers.
+                      </p>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
-              {/* Section 2 */}
-              <div className="bg-gray-700 p-6 rounded-lg">
-                <h2 className="text-xl font-bold mb-3">
-                  Ajaya Nandiyawar's Assets
-                </h2>
-                <div className="flex flex-wrap justify-center gap-6">
-                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105"></div>
-                  <div className="bg-gray-600 rounded-lg w-60 h-48 transition-transform transform hover:scale-105"></div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

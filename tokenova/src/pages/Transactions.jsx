@@ -77,22 +77,16 @@ const Transactions = () => {
 
   useEffect(() => {
     document.title = "Tokenova | Transactions";
-    
-    const fetchData = async () => {
-      try {
-        const history = await fetch("http://localhost:5080/api/transactions/history", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          }
-        })
-        setTransactions(await history.json());
-      } catch (error) {
-        console.error(error);
+    fetch("http://localhost:5080/api/transactions/history", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       }
-    }
-    fetchData();
-
+    }).then(res => res.json())
+    .then(data => {
+      setTransactions(data.transactions)
+      console.log(data.transactions);
+    })
   }, []);
 
   return (
@@ -109,7 +103,7 @@ const Transactions = () => {
         <h1 className="text-4xl font-bold mb-6 text-primary">My Transactions</h1>
         <p className="text-gray-300 max-w-3xl text-center">
           {
-            transactions.length > 0 ?
+            transactions ?
               transactions.map((tx, index) => (
                 <div key={index} className="bg-background-light p-4 rounded-md my-2 flex justify-between items-center">
                   <div>
