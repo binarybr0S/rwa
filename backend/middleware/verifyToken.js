@@ -1,13 +1,12 @@
 import jwt from "jsonwebtoken";
-import { authTokenCookie } from "../config/authToken.js";
 
 function verifyToken(req, res, next) {
-    console.log(req.cookies);
-    
-    if (!req.cookies || !req.cookies[authTokenCookie.name]){
-        return res.status(401).json({ message: "Unauthorized - No token provided" });
+    if (!req.headers.authorization){
+        return res.status(401).json({ message: "Unauthorized - No authorization token provided" });
     }
-    const token = req.cookies[authTokenCookie.name];
+    
+    const token = req.headers.authorization;
+    
     try {
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
         if (!decodedToken) {

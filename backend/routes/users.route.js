@@ -7,4 +7,4 @@ router.get('/me', getMyUserProfile);
 router.get('/:id', getUserProfileById);
 router.put('/', updateUser);
 
-export {router as usersRouter };
+export { router as usersRouter };

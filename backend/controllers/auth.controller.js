@@ -1,18 +1,26 @@
 import User from "../models/User.js";
-import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 import { authTokenCookie } from "../config/authToken.js";
+import jwt from "jsonwebtoken"
 
 // -----------------------------------------------------------------------------------------------------------
 // Note: `uudi` (uniqueUserDocumentId) will be provided by the DigiLocker API after user has authenticated using it.
 // -----------------------------------------------------------------------------------------------------------
+const generateTokenAndSetCookie = (res, user) => {
+    const token = jwt.sign({
+        userId: user._id, 
+    }, process.env.JWT_SECRET, {
+        expiresIn: "1d"
+    })
+    return token;
+}
 
 async function signup(req, res) {
-    const { name, uudi, walletAddress } = req.body;
+    const { name, walletAddress, uudi } = req.body;
     try {
         if (!name || !walletAddress || !uudi) {
             return res.status(400).json({message:"All fields are required"})
         }
-        const userExists = await User.findOne({ walletAddress });
+        const userExists = await User.findOne({ uudi });
         if (userExists) {
             return res.status(400).json({message:"User with this wallet address already exists"})
         }
@@ -24,13 +32,13 @@ async function signup(req, res) {
         })
 
         await user.save();
-
         // create jwt
         generateTokenAndSetCookie(res, user);
 
         res.status(200).json({
-            user
-        })
+            user,
+            token
+        });
 
     } catch (error) {
         console.error(error);
@@ -42,7 +50,7 @@ async function login(req, res) {
     const { uudi, walletAddress } = req.body;
     try {
         if (!walletAddress) {
-            return res.status(400).json({message:"All fields are required"})
+            return res.status(400).json({message: "All fields are required" })
         }
 
         const user = await User.findOne({ uudi });
@@ -54,16 +62,16 @@ async function login(req, res) {
             res.status(400).json({ message: "Invalid Credentials" });
         }
         
-        generateTokenAndSetCookie(res, user);
         user.lastLogin = new Date();
         await user.save();
-
+        
+        const token = generateTokenAndSetCookie(res, user);
         res.status(200).json({
             error: false,
             message:"Logged in successfully",
-            user: user
-        })
-
+            user: user,
+            token
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({message:"Error occurred"})
