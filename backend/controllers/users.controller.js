@@ -9,6 +9,7 @@ async function getMyUserProfile(req, res) {
         res.status(200).json({
             user: {
                 ...user._doc,
+                password: undefined,
             }
         });
     } catch (error) {
@@ -48,13 +49,14 @@ async function getUserProfileById(req, res) {
 
 async function updateUser(req, res) {
     try {
-        const user = await User.findByIdAndUpdate(req.userId, req.body);
+        const user = await User.findByIdAndUpdate(req, req.body);
         if (!user){
             return res.status(404).json({ message: "User with the provided id does not exist" });
         }
         res.status(200).json({
             user: {
                 ...user._doc,
+                password: undefined,
             }
         });
     } catch (error) {
